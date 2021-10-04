@@ -1,41 +1,81 @@
-import axios from "axios"
-import accessToken from "./jwt-token-access/accessToken"
+var gitHubAccessToken = 'token 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'
 
-//pass new generated access token here
-const token = accessToken
+export const getOrgInfo = (orgName) => {
 
-//apply base url for axios
-const API_URL = ""
+  var orgUrl = 'https://api.github.com/orgs/' + orgName
 
-const axiosApi = axios.create({
-  baseURL: API_URL,
-})
+  return new Promise((resolve, reject) => {
 
-axiosApi.defaults.headers.common["Authorization"] = token
+    fetch(orgUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    .then(async response => {
+  
+      const data = await response.json()
 
-axiosApi.interceptors.response.use(
-  response => response,
-  error => Promise.reject(error)
-)
+      //Send loads back to requester /fetchLoads() 
+      resolve(data)
 
-export async function get(url, config = {}) {
-  return await axiosApi.get(url, { ...config }).then(response => response.data)
+
+    }).catch(err => reject(err))
+    
+  })
 }
 
-export async function post(url, data, config = {}) {
-  return axiosApi
-    .post(url, { ...data }, { ...config })
-    .then(response => response.data)
+export const getOrgMembers = (orgName) => {
+
+  var orgMembersUrl = 'https://api.github.com/orgs/' + orgName + '/members?per_page=100'
+
+  return new Promise((resolve, reject) => {
+
+
+    fetch(orgMembersUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    .then(async response => {
+  
+      const data = await response.json()
+
+      //Send loads back to requester /fetchLoads() 
+      resolve(data)
+
+    }).catch(err => reject(err))
+    
+  })
 }
 
-export async function put(url, data, config = {}) {
-  return axiosApi
-    .put(url, { ...data }, { ...config })
-    .then(response => response.data)
+export const getRepoList = (orgName) => {
+
+  var repoUrl = 'https://api.github.com/orgs/' + orgName + '/repos?per_page=100'
+
+  return new Promise((resolve, reject) => {
+
+    fetch(repoUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    .then(async response => {
+  
+      const data = await response.json()
+
+      //Send data back to requester, fetchRepoList() 
+      resolve(data)
+
+    }).catch(err => reject(err))
+  })
 }
 
-export async function del(url, config = {}) {
-  return await axiosApi
-    .delete(url, { ...config })
-    .then(response => response.data)
+export const getCommitList = (commitsUrl) => {
+
+  //Limit 20 results for commit list
+  var resultsLimit = "?per_page=20"
+
+  return new Promise((resolve, reject) => {
+    
+    fetch(commitsUrl + resultsLimit, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    .then(async response => {
+  
+      const data = await response.json()
+
+      //Send loads back to requester /fetchLoads() 
+      resolve(data)
+
+    }).catch(err => reject(err))
+    
+  })
+ 
 }
+

@@ -1487,7 +1487,9 @@ body[data-layout="horizontal"][data-layout-size="boxed"] .container-fluid, body[
     position: relative; }
 
 .input-group-text {
-  margin-bottom: 0px; }
+  margin-bottom: 0px; 
+}
+
 
 .mini-stats-wid .mini-stat-icon {
   overflow: hidden;
@@ -2906,11 +2908,7 @@ div.dataTables_wrapper div.dataTables_filter {
     width: 300px;
     height: 300px;
     border-radius: 50%; }
-  .auth-full-bg .bg-overlay {
-    background: url("../../images/bg-auth-overlay.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; }
+  
 
 .auth-full-page-content {
   display: -webkit-box;
@@ -3480,10 +3478,6 @@ div.dataTables_wrapper div.dataTables_filter {
 .hero-section {
   padding-top: 220px;
   padding-bottom: 190px; }
-  .hero-section.bg-ico-hero {
-    background-image: url("../../images/crypto/bg-ico-hero.jpg");
-    background-size: cover;
-    background-position: top; }
   @media (max-width: 575.98px) {
     .hero-section {
       padding-top: 140px;
