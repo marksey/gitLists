@@ -29,9 +29,7 @@ import {
 
 function* fetchOrgInfo({ payload: orgName }) {
   try {
-    console.log("Fetching org info!")
     const response = yield call(getOrgInfo, orgName)
-    console.log("Here's the response:", response)
     yield put(getOrgInfoSuccess(response))
   } catch (error) {
     yield put(getOrgInfoFail(error))
