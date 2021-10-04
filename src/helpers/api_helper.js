@@ -6,7 +6,7 @@ export const getOrgInfo = (orgName) => {
 
   return new Promise((resolve, reject) => {
 
-    fetch(orgUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    fetch(orgUrl, {method: "GET"})
     .then(async response => {
   
       const data = await response.json()
@@ -27,7 +27,7 @@ export const getOrgMembers = (orgName) => {
   return new Promise((resolve, reject) => {
 
 
-    fetch(orgMembersUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    fetch(orgMembersUrl, {method: "GET"})
     .then(async response => {
   
       const data = await response.json()
@@ -46,7 +46,7 @@ export const getRepoList = (orgName) => {
 
   return new Promise((resolve, reject) => {
 
-    fetch(repoUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    fetch(repoUrl, {method: "GET"})
     .then(async response => {
   
       const data = await response.json()
@@ -65,7 +65,7 @@ export const getCommitList = (commitsUrl) => {
 
   return new Promise((resolve, reject) => {
     
-    fetch(commitsUrl + resultsLimit, {method: "GET", headers: {Authorization: gitHubAccessToken}})
+    fetch(commitsUrl + resultsLimit, {method: "GET"})
     .then(async response => {
   
       const data = await response.json()
