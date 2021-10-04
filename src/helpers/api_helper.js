@@ -1,4 +1,4 @@
-var gitHubAccessToken = 'token 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'
+var gitHubAccessToken = 'token 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'
 
 export const getOrgInfo = (orgName) => {
 
@@ -6,7 +6,7 @@ export const getOrgInfo = (orgName) => {
 
   return new Promise((resolve, reject) => {
 
-    fetch(orgUrl, {method: "GET"})
+    fetch(orgUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
     .then(async response => {
   
       const data = await response.json()
@@ -27,7 +27,7 @@ export const getOrgMembers = (orgName) => {
   return new Promise((resolve, reject) => {
 
 
-    fetch(orgMembersUrl, {method: "GET"})
+    fetch(orgMembersUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
     .then(async response => {
   
       const data = await response.json()
@@ -46,7 +46,7 @@ export const getRepoList = (orgName) => {
 
   return new Promise((resolve, reject) => {
 
-    fetch(repoUrl, {method: "GET"})
+    fetch(repoUrl, {method: "GET", headers: {Authorization: gitHubAccessToken}})
     .then(async response => {
   
       const data = await response.json()
@@ -65,7 +65,7 @@ export const getCommitList = (commitsUrl) => {
 
   return new Promise((resolve, reject) => {
     
-    fetch(commitsUrl + resultsLimit, {method: "GET"})
+    fetch(commitsUrl + resultsLimit, {method: "GET", headers: {Authorization: gitHubAccessToken}})
     .then(async response => {
   
       const data = await response.json()
