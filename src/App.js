@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import {publicRoutes } from "./routes/"
 import AppRoute from "./routes/route"
 
-//layout
+//Layout
 import NonAuthLayout from "./components/NonAuthLayout"
 
 // Import scss
